@@ -4,7 +4,7 @@
 
     <groupId>eu.clarin.switchboard</groupId>
     <artifactId>profiler</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -12,11 +12,27 @@
     </properties>
 
     <scm>
-        <url>https://github.com/clarin-eric/switchboard.git</url>
-        <connection>scm:git:https://github.com/clarin-eric/switchboard.git</connection>
-        <developerConnection>scm:git:https://github.com/clarin-eric/switchboard.git</developerConnection>
+        <url>https://github.com/weblicht/profiler.git</url>
+        <connection>scm:git:https://github.com/weblicht/profiler.git</connection>
+        <developerConnection>scm:git:https://github.com/weblicht/profiler.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>Maven Packages for Weblicht hosted on GitHub</name>
+            <url>https://maven.pkg.github.com/weblicht/profiler</url>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>github</id>
+            <name>Maven Packages for Weblicht hosted on GitHub</name>
+            <url>https://maven.pkg.github.com/weblicht/profiler</url>
+        </repository>
+    </repositories>
 
     <dependencies>
 
@@ -107,29 +123,6 @@
                     <source>8</source>
                     <target>8</target>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>appassembler-maven-plugin</artifactId>
-                <version>1.10</version>
-                <configuration>
-                    <extraJvmArguments>-Dfile.encoding=UTF-8</extraJvmArguments>
-                    <programs>
-                        <program>
-                            <mainClass>eu.clarin.switchboard.app.SwitchboardApp</mainClass>
-                            <id>${project.artifactId}</id>
-                        </program>
-                    </programs>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>assemble</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
