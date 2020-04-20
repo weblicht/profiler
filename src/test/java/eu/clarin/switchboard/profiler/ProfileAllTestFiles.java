@@ -6,6 +6,7 @@ import eu.clarin.switchboard.profiler.api.ProfilingException;
 import eu.clarin.switchboard.profiler.text.TextProfiler;
 import org.apache.tika.exception.TikaException;
 import org.junit.Test;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
@@ -18,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ProfileAllTestFiles {
-    private static final ch.qos.logback.classic.Logger LOGGER = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(ProfileAllTestFiles.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProfileAllTestFiles.class);
 
     static final String RESOURCES_ROOT_PATH = "./src/test/resources/";
 

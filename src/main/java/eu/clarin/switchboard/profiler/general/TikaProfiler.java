@@ -10,6 +10,7 @@ import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.metadata.TikaMetadataKeys;
 import org.apache.tika.parser.AutoDetectParser;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
@@ -19,7 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 public class TikaProfiler implements Profiler {
-    private static final ch.qos.logback.classic.Logger LOGGER = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(TikaProfiler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TikaProfiler.class);
     private static final Set<String> CERTAIN_MEDIATYPES = ImmutableSet.<String>builder()
             .add("application/pdf")
             .add("application/rtf")

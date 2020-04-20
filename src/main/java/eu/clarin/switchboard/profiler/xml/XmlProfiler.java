@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import eu.clarin.switchboard.profiler.api.Profile;
 import eu.clarin.switchboard.profiler.api.Profiler;
 import eu.clarin.switchboard.profiler.api.ProfilingException;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.core.MediaType;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 public class XmlProfiler implements Profiler {
-    private static final ch.qos.logback.classic.Logger LOGGER = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(XmlProfiler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(XmlProfiler.class);
 
     public static final String FEATURE_SCHEMA_RELAXNG = "schemaRelaxNG";
     public static final String FEATURE_SCHEMA_SCHEMATRON = "schemaSchematron";
