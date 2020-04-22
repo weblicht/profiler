@@ -2,6 +2,14 @@
 
 The Profiler is a java library able to profile (i.e. determine the mediatype, format variant and language) of an arbitrary file.
 
+## How to use the Profiler
+
+```java
+File myFile = new File("/path/to/my/file");
+Profiler profiler = new DefaultProfiler();
+List<Profile> detectedProfiles = profiler.profile(myFile);
+```
+
 ## API
 
 A profiler is a Java class satisfying the Profiler interface 
