@@ -34,7 +34,8 @@ public class ProfileAllTestFiles {
 
             // .put("exmaralda/", Profile.builder().mediaType("application/").build())
 
-            .put("folia/folia-WR-P-E-J-0000000000.folia.xml", Profile.builder().certain().mediaType("text/folia+xml").language("nld").build())
+            .put("folia/folia-WR-P-E-J-0000000000.folia.xml", Profile.builder().certain().mediaType("application/folia+xml").language("nld").build())
+            .put("folia/folia-arabic.folia.xml", Profile.builder().certain().mediaType("application/folia+xml").language("ara").build())
 
             // .put("folker/", Profile.builder().mediaType("application/").build())
 
