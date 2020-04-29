@@ -197,6 +197,16 @@ public class Profile implements Comparable<Profile> {
             return this;
         }
 
+        //allow some introspection during building
+        public boolean hasFeature(String featureKey) {
+            return features.containsKey(featureKey);
+        }
+
+        //allow some introspection during building
+        public String getFeature(String featureKey) {
+            return features.get(featureKey);
+        }
+
         public Profile build() {
             return new Profile(confidence, mediaType, features);
         }
