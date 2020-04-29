@@ -55,6 +55,10 @@ public class Profile implements Comparable<Profile> {
         return features;
     }
 
+    public boolean hasFeature(String featureKey) {
+        return features.containsKey(featureKey);
+    }
+
     public String getFeature(String featureKey) {
         return features.get(featureKey);
     }
