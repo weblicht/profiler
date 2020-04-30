@@ -75,7 +75,7 @@ public class FoliaProfiler implements Profiler {
                     if (elementName.equals(XMLNAME_FOLIA_ROOT)) {
                         profileBuilder.mediaType(MEDIATYPE_FOLIA);
                         Attribute attribute = element.getAttributeByName(new QName(XMLNAME_VERSION));
-                        if (attribute != null) {
+                        if (attribute == null) {
                             throw new ProfilingException("FoLiA document has no version attribute!");
                         }
                         profileBuilder.feature(FEATURE_VERSION, attribute.getValue());
@@ -109,9 +109,10 @@ public class FoliaProfiler implements Profiler {
                     } else if ((isInDeclarations) && elementName.endsWith("-annotation")) {
                         Attribute attribute = element.getAttributeByName(new QName(XMLNAME_SET));
 
+
                         //the feature name is exactly the same as the element name in the declaration, so you get
                         //features like: token-annotation, lemma-annotation, text-annotation, dependency-annotation, etc..
-                        String featureName = attribute.getName().getLocalPart().toLowerCase();
+                        String featureName = elementName;
 
                         //the feature value is a comma separated list of sets (as there can be multiple)
                         //or, in case an annotation layer is not associated with any set, the value is empty.
@@ -124,10 +125,13 @@ public class FoliaProfiler implements Profiler {
                                 if (!value.isEmpty()) {
                                     profileBuilder.feature(featureName, value.concat(",").concat(attribute.getValue()));
                                 } else {
-                                    profileBuilder.feature(featureName, "");
+                                    profileBuilder.feature(featureName, attribute.getValue());
                                 }
+                            } else {
+                                profileBuilder.feature(featureName, attribute.getValue());
                             }
                         }
+
 
                         //FoLiA >v2 holds more information (list of annotators per annotation type/set), but
                         //those are currently not propagated to the profiler yet (probably overkill)
@@ -169,7 +173,7 @@ public class FoliaProfiler implements Profiler {
                             if (metaFieldValue.length() == 2) {
                                 //assume iso-639-1
                                 String lang = LanguageCode.iso639_1to639_3(metaFieldValue);
-                                profileBuilder.feature(FEATURE_LANGUAGE, metaFieldValue);
+                                profileBuilder.feature(FEATURE_LANGUAGE, lang);
                             } else if (metaFieldValue.length() == 3) {
                                 //assume iso-639-3
                                 profileBuilder.feature(FEATURE_LANGUAGE, metaFieldValue);

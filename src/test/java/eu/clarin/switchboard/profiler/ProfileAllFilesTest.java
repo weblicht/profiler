@@ -34,8 +34,36 @@ public class ProfileAllFilesTest {
 
             // .put("exmaralda/", Profile.builder().mediaType("application/").build())
 
-            .put("folia/folia-WR-P-E-J-0000000000.folia.xml", Profile.builder().certain().mediaType("application/folia+xml").language("nld").build())
-            .put("folia/folia-arabic.folia.xml", Profile.builder().certain().mediaType("application/folia+xml").language("ara").build())
+            .put("folia/folia-WR-P-E-J-0000000000.folia.xml", Profile.builder().certain()
+                    .mediaType("application/folia+xml")
+                    .feature("version","0.8.0")
+                    .feature("externalMetadata","WR-P-E-J-0000000000.cmdi")
+                    .feature("externalMetadataType","imdi") //well, this is clearly wrong since a CMDI file is references but it's what the original document says, so we test against it..
+                    .feature("token-annotation","")
+                    .feature("pos-annotation","hdl:1839/00-SCHM-0000-0000-000B-9,http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn" )
+                    .feature("lemma-annotation","hdl:1839/00-SCHM-0000-0000-000E-3,http://ilk.uvt.nl/folia/sets/frog-mblem-nl")
+                    .feature("morphological-annotation","http://ilk.uvt.nl/folia/sets/frog-mbma-nl" )
+                    .feature("entity-annotation","hdl:1839/00-SCHM-0000-0000-000D-5")
+                    //.language("und") //language is undefined because it should be in the external metadata (which is not parsed)
+                    .build())
+
+            .put("folia/folia-arabic.folia.xml", Profile.builder().certain()
+                    .mediaType("application/folia+xml")
+                    .feature("version","2.2.1")
+                    .language("ara")
+                    .feature("provenance","proycon,foliavalidator,foliapy")
+                    .feature("token-annotation","")
+                    .feature("division-annotation","")
+                    .feature("sentence-annotation","")
+                    .feature("paragraph-annotation","")
+                    .feature("head-annotation","")
+                    .feature("phonological-annotation","adhoc")
+                    .feature("morphological-annotation","adhoc")
+                    .feature("pos-annotation","adhoc")
+                    .feature("text-annotation","https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl")
+                    .feature("entity-annotation","https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/namedentities.foliaset.xml")
+                    .feature("phon-annotation","https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/phon.foliaset.ttl")
+                    .feature("direction","rtl").build())
 
             // .put("folker/", Profile.builder().mediaType("application/").build())
 
