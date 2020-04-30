@@ -24,7 +24,7 @@ public class XmlProfiler implements Profiler {
     public static final String FEATURE_SCHEMA_SCHEMATRON = "schemaSchematron";
 
     public static final Map<String, String> root2mediaType = ImmutableMap.<String, String>builder()
-            .put("FoLiA", "text/folia+xml")
+            .put("FoLiA", "application/folia+xml")
             .put("maf", "text/maf+xml")
             .put("folker-transcription", "application/xml;format-variant=folker-fln")
             .put("basic-transcription", "application/xml;format-variant=exmaralda-exb")
@@ -59,6 +59,9 @@ public class XmlProfiler implements Profiler {
         if (TcfProfiler.XMLNAME_TCF_ROOT.equals(xmlFeatures.rootName.getLocalPart())) {
             TcfProfiler tcfProfiler = new TcfProfiler(xmlInputFactory);
             return tcfProfiler.profile(file);
+        } else if (FoliaProfiler.XMLNAME_FOLIA_ROOT.equals(xmlFeatures.rootName.getLocalPart())) {
+            FoliaProfiler foliaProfiler = new FoliaProfiler(xmlInputFactory);
+            return foliaProfiler.profile(file);
         } else {
             TeiProfiler teiProfiler = new TeiProfiler(xmlInputFactory);
             if (teiProfiler.isTEIRoot(xmlFeatures.rootName.getLocalPart())) {

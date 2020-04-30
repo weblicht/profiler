@@ -21,6 +21,7 @@ public class ProfileTest {
         assertTrue(newProfile("application/xml").isXmlMediaType());
         assertTrue(newProfile("application/tei+xml").isXmlMediaType());
         assertTrue(newProfile("application/tei+xml;format-variant=whatever").isXmlMediaType());
+        assertTrue(newProfile("application/folia+xml").isXmlMediaType());
         assertTrue(newProfile("text/xml+imaginary;parameter=unknown").isXmlMediaType());
         assertTrue(newProfile("text/prs.xml+imaginary;parameter=unknown").isXmlMediaType());
         assertTrue(newProfile("text/prs.xmlasd+xml;parameter=unknown").isXmlMediaType());
