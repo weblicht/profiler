@@ -18,8 +18,8 @@ import java.util.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class ProfileAllTestFiles {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProfileAllTestFiles.class);
+public class ProfileAllFilesTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProfileAllFilesTest.class);
 
     static final String RESOURCES_ROOT_PATH = "./src/test/resources/";
 
@@ -121,7 +121,7 @@ public class ProfileAllTestFiles {
 
     DefaultProfiler profiler = new DefaultProfiler();
 
-    public ProfileAllTestFiles() throws TikaException, IOException, SAXException {
+    public ProfileAllFilesTest() throws TikaException, IOException, SAXException {
     }
 
     @Test
