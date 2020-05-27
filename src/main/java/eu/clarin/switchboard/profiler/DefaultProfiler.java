@@ -93,7 +93,6 @@ public class DefaultProfiler implements Profiler {
             }
 
             if (text != null) {
-                LOGGER.debug("file text: " + text);
                 language = languageDetector.detect(text);
                 LOGGER.debug("file " + file.getName() + "; detected language: " + language);
                 firstProfile = Profile.builder(firstProfile).language(language).build();
