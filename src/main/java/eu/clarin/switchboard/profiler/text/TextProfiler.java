@@ -27,6 +27,7 @@ public class TextProfiler implements Profiler {
 
     public static final String MEDIATYPE_NEGRA = "text/negra";
     public static final String MEDIATYPE_SDT = "text/sdt";
+    public static final String MEDIATYPE_PLY = "text/plain;format-variant=ply";
 
     public static final String MEDIATYPE_EXMARALDA_SIMPLE = "text/exmaralda-simple";
     public static final String MEDIATYPE_QUERY_CQP = "text/query-cqp";
@@ -46,6 +47,7 @@ public class TextProfiler implements Profiler {
     static final int TEST_BYTES_LENGTH = 4 * 1024 * 1024; // how much to test and read into a string
 
     static final String HEADER_NEGRA = "%% NEGRA converted from TCF";
+    static final String HEADER_PLY = "ply\n";
 
     static final double CONLLU_MIN_LINES_FIRSTCHAR_DIGIT_HASH_EMPTY_RATIO = 0.90; // conservative - all lines start with digit, hash, or empty
     static final double CONLLU_MIN_TAB_TO_DIGITLINE_RATIO = 8.9; // each line that starts with a digit should have 9 tabs
@@ -177,6 +179,11 @@ public class TextProfiler implements Profiler {
     }
 
     public List<Profile> profile(Statistics stats, String header, File file) throws IOException {
+        if (header.startsWith(HEADER_PLY)) {
+            Profile profile = Profile.builder().certain().mediaType(MEDIATYPE_PLY).build();
+            return Collections.singletonList(profile);
+        }
+
         if (header.startsWith(HEADER_NEGRA)) {
             Profile profile = Profile.builder().certain().mediaType(MEDIATYPE_NEGRA).build();
             return Collections.singletonList(profile);
