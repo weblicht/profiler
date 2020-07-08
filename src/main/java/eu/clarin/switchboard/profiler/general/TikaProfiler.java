@@ -37,6 +37,7 @@ public class TikaProfiler implements Profiler {
             .add("audio/mp3")
             .add("audio/mp4")
             .add("audio/x-mpeg")
+            .add("model/prs.ply")
             .build();
 
     Detector mediaTypeDetector;

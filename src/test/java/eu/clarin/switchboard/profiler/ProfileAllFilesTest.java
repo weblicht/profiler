@@ -81,7 +81,8 @@ public class ProfileAllFilesTest {
 
             .put("pdf/test.pdf", Profile.builder().certain().mediaType("application/pdf").language("eng").build())
 
-            .put("ply/testcube.ply", Profile.builder().certain().mediaType("text/plain;format-variant=ply").build())
+            .put("ply/testcube.ply", Profile.builder().certain().mediaType("model/prs.ply").build())
+            .put("ply/gargo.ply", Profile.builder().certain().mediaType("model/prs.ply").build())
 
             .put("ppt/test.pptx", Profile.builder().certain().mediaType("application/vnd.openxmlformats-officedocument.presentationml.presentation").language("eng").build())
 

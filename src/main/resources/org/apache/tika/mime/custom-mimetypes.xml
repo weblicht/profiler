@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info>
+    <mime-type type="model/prs.ply">
+        <magic priority="50">
+             <match value="0x706c790a" type="string" offset="0" />
+        </magic>
+        <glob pattern="*.ply"/>
+    </mime-type>
+</mime-info>

@@ -27,7 +27,7 @@ public class TextProfiler implements Profiler {
 
     public static final String MEDIATYPE_NEGRA = "text/negra";
     public static final String MEDIATYPE_SDT = "text/sdt";
-    public static final String MEDIATYPE_PLY = "text/plain;format-variant=ply";
+    public static final String MEDIATYPE_PLY = "model/prs.ply";
 
     public static final String MEDIATYPE_EXMARALDA_SIMPLE = "text/exmaralda-simple";
     public static final String MEDIATYPE_QUERY_CQP = "text/query-cqp";

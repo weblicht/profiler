@@ -31,7 +31,7 @@ public class Profile implements Comparable<Profile> {
 
     private Profile(Confidence confidence, String mediaType, Map<String, String> features) {
         this.confidence = Objects.requireNonNull(confidence);
-        this.mediaType = Objects.requireNonNull(mediaType);
+        this.mediaType = stripSpaces(Objects.requireNonNull(mediaType));
         this.features = ImmutableMap.copyOf(Objects.requireNonNull(features));
     }
 
@@ -98,8 +98,10 @@ public class Profile implements Comparable<Profile> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Profile profile = (Profile) o;
         return Objects.equals(confidence, profile.confidence) &&
                 Objects.equals(mediaType, profile.mediaType) &&
@@ -244,5 +246,15 @@ public class Profile implements Comparable<Profile> {
                     mediaType == null ? MediaType.APPLICATION_OCTET_STREAM : mediaType,
                     features);
         }
+    }
+
+    private static String stripSpaces(String s) {
+        StringBuilder sb = new StringBuilder();
+        s.chars().forEachOrdered(c -> {
+            if (!Character.isSpaceChar(c)) {
+                sb.append((char)c);
+            }
+        });
+        return sb.toString();
     }
 }
