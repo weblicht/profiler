@@ -66,11 +66,7 @@ public class XmlUtils {
                         Iterator<?> nsIterator = event.asStartElement().getNamespaces();
                         while (nsIterator.hasNext()) {
                             Namespace ns = (Namespace) nsIterator.next();
-                            if (QNAME_XMLNS.equals(ns.getName())) {
-                                xmlFeatures.rootNamespace = ns.getValue();
-                            } else {
-                                xmlFeatures.rootNamespaces.put(ns.getName(), ns.getValue());
-                            }
+                            xmlFeatures.rootNamespaces.put(ns.getName(), ns.getValue());
                         }
                     } else {
                         break;
@@ -90,7 +86,6 @@ public class XmlUtils {
 
     public static class XmlFeatures {
         QName rootName;
-        String rootNamespace;
         Map<QName, String> rootNamespaces = new LinkedHashMap<>();
         Map<QName, String> rootAttributes = new LinkedHashMap<>();
         String schemaRelaxNG;
@@ -100,7 +95,7 @@ public class XmlUtils {
     private static final Pattern PATTERN_XMLATTRIBUTE = Pattern.compile("(\\w+)=\"(.*)\"");
 
     private static void processPI(ProcessingInstruction pi, XmlFeatures xmlFeatures) {
-        if ("xml-model".equalsIgnoreCase(pi.getTarget())) {
+        if ("xml-model" .equalsIgnoreCase(pi.getTarget())) {
             String href = null, type = null, schematypens = null;
 
             String[] attributeValueList = pi.getData().split("\\s+");

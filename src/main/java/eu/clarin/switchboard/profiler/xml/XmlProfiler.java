@@ -59,6 +59,9 @@ public class XmlProfiler implements Profiler {
         if (TcfProfiler.XMLNAME_TCF_ROOT.equals(xmlFeatures.rootName.getLocalPart())) {
             TcfProfiler tcfProfiler = new TcfProfiler(xmlInputFactory);
             return tcfProfiler.profile(file);
+        } else if (CMDIProfiler.XMLNAME_ROOT_CMDI.equals(xmlFeatures.rootName.getLocalPart())) {
+            CMDIProfiler cmdiProfiler = new CMDIProfiler(xmlInputFactory);
+            return cmdiProfiler.profile(file);
         } else if (FoliaProfiler.XMLNAME_FOLIA_ROOT.equals(xmlFeatures.rootName.getLocalPart())) {
             FoliaProfiler foliaProfiler = new FoliaProfiler(xmlInputFactory);
             return foliaProfiler.profile(file);

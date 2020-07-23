@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:CMD xmlns:ns0="http://www.clarin.eu/cmd/1" xmlns:ns2="http://www.clarin.eu/cmd/1/profiles/clarin.eu:cr1:p_1588142628405" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" CMDVersion="1.2" xsi:schemaLocation="http://www.clarin.eu/cmd/1 https://infra.clarin.eu/CMDI/1.x/xsd/cmd-envelop.xsd     http://www.clarin.eu/cmd/1/profiles/clarin.eu:cr1:p_1588142628405 https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/clarin.eu:cr1:p_1588142628405/xsd">
+  <ns0:Header>
+    <ns0:MdCreator>Canan Hastik</ns0:MdCreator>
+    <ns0:MdCreationDate>2020-06-05</ns0:MdCreationDate>
+    <ns0:MdSelfLink/>
+    <ns0:MdProfile></ns0:MdProfile>
+    <ns0:MdCollectionDisplayName/>
+  </ns0:Header>
+  <ns0:Resources>
+    <ns0:ResourceProxyList>
+      <ns0:ResourceProxy id="rp0">
+        <ns0:ResourceType>LandingPage</ns0:ResourceType>
+        <ns0:ResourceRef>https://textgridrep.org/</ns0:ResourceRef>
+      </ns0:ResourceProxy>
+    </ns0:ResourceProxyList>
+    <ns0:JournalFileProxyList/>
+    <ns0:ResourceRelationList/>
+  </ns0:Resources>
+  <ns0:Components>
+    <ns2:applicationDescription>
+      <ns2:applicationName>TextGrid Repository</ns2:applicationName>
+      <ns2:applicationLogo>https://textgridrep.org/images/textgrid-repository-logo.svg</ns2:applicationLogo>
+      <ns2:version></ns2:version>
+      <ns2:applicationCategory>Corpus and Digital Library of TextGrid</ns2:applicationCategory>
+      <ns2:applicationSubCategory>Open Archival Information System (OAIS)</ns2:applicationSubCategory>
+      <ns2:maturityLevel>production</ns2:maturityLevel>
+      <ns2:applicationType>Web-UI</ns2:applicationType>
+      <ns2:toolType>other</ns2:toolType>
+      <ns2:Description>
+				The TextGrid Repository (TextGridRep) is a digital preservation archive for human sciences research data providing a variety of data for teaching and research purposes. It promotes open access to research data including open standards allowing an efficient reuse for research. The TextGridRep also provides researchers with a comprehensive and reliable service to store their data permanently, well described and with a stable reference for citation and reuse.
+
+			    **TextGridRep** features include, for instance:
+
+                - Ingest Functional Entity
+				- Archival Storage Functional Entity
+				- Data Management Functional Entity
+				- Administration Functional Entity
+				- Preservation Planning Functional Entity
+				- Access Functional Entity.
+
+				The TextGrid Repository uses the syntax of Apache Lucene 2.9.4. and the data stock of the Digital Library can be reproduced, distributed and made available to the public.
+
+				**TextGridRep** is used by [German researchers]
+				for reading and for further processing, e.g. in editions and text corpora, of texts the online library zeno.org,
+				which be arranged in the following categories: Literature, Fairytales, History, Cultural history, Art, Music, Natural sciences, Philosophy, Sociology, and reference works.
+
+                **TextGridRep** collection of texts was acquired as part of the research project TextGrid (www.textgrid.de, funding code: 01UG1203A) with funds provided by the BMBF (“Bundesministerium für Bildung und Forschung” – German Federal Ministry of Education and Research).
+	  </ns2:Description>
+      <ns2:sourceCodeArchive/>
+      <ns2:encryptedCommunication>https</ns2:encryptedCommunication>
+      <ns2:dataPrivacyPolicy>unknown</ns2:dataPrivacyPolicy>
+      <ns2:authentication>none</ns2:authentication>
+      <ns2:authenticationDescription/>
+      <ns2:interfaceLanguage/>
+      <ns2:targetUser>Scholars interested in German Literature Studies</ns2:targetUser>
+      <ns2:Creators>
+        <ns2:Descriptions>
+          <ns2:Description>???</ns2:Description>
+        </ns2:Descriptions>
+      </ns2:Creators>
+      <ns2:applicationContacts>
+        <ns2:hoster>
+          <ns2:location>Germany</ns2:location>
+        </ns2:hoster>
+        <ns2:technicalContacts>
+          <ns2:contactEMail>thorsten.vitt@uni-würzburg.de</ns2:contactEMail>
+          <ns2:Person>
+            <ns2:firstName>Thorsten</ns2:firstName>
+            <ns2:lastName>Vitt</ns2:lastName>
+            <ns2:role/>
+          </ns2:Person>
+        </ns2:technicalContacts>
+		<ns2:technicalContacts>
+          <ns2:contactEMail>funk@sub.uni-goettingen.de</ns2:contactEMail>
+          <ns2:Person>
+            <ns2:firstName>Stefan</ns2:firstName>
+            <ns2:lastName>Funk</ns2:lastName>
+            <ns2:role/>
+          </ns2:Person>
+        </ns2:technicalContacts>
+      </ns2:applicationContacts>
+      <ns2:webApplication>
+        <ns2:browserRequirements/>
+        <ns2:applicationSuite/>
+        <ns2:scalabilityType>???</ns2:scalabilityType>
+        <ns2:APIaccess>
+          <ns2:APIAccessLink>
+            <ns2:URL>https://textgridrep.org/browse/root</ns2:URL>
+            <ns2:APIType>other</ns2:APIType>
+            <ns2:APIDescription>The Web Application must be used in a web browser</ns2:APIDescription>
+            <ns2:languageEncoding>unknown</ns2:languageEncoding>
+            <ns2:parameters>
+              <ns2:parameter role="input">
+                <ns2:name>none</ns2:name>
+                <ns2:value/>
+              </ns2:parameter>
+            </ns2:parameters>
+          </ns2:APIAccessLink>
+        </ns2:APIaccess>
+      </ns2:webApplication>
+      <ns2:inputFormats>
+        <ns2:supportedLanguage></ns2:supportedLanguage>
+        <ns2:supportedLanguage></ns2:supportedLanguage>
+        <ns2:supportedLanguage></ns2:supportedLanguage>
+        <ns2:supportedLanguage></ns2:supportedLanguage>
+        <ns2:supportedLanguage></ns2:supportedLanguage>
+        <ns2:supportedLanguage></ns2:supportedLanguage>
+        <ns2:format>
+          <ns2:mediaType>text/plain</ns2:mediaType>
+        </ns2:format>
+        <ns2:format>
+          <ns2:mediaType>text/xml</ns2:mediaType>
+        </ns2:format>
+        <ns2:format>
+          <ns2:mediaType>application/tei+xml</ns2:mediaType>
+        </ns2:format>
+        <ns2:format>
+          <ns2:mediaType>application/tei+xml;format-variant=tei-dta</ns2:mediaType>
+        </ns2:format>
+      </ns2:inputFormats>
+      <ns2:outputFormats>
+        <ns2:format>
+          <ns2:mediaType>none</ns2:mediaType>
+        </ns2:format>
+      </ns2:outputFormats>
+      <ns2:usageRestrictions>
+        <ns2:individualUserRestrictions>academic</ns2:individualUserRestrictions>
+        <ns2:countriesSupported>all</ns2:countriesSupported>
+      </ns2:usageRestrictions>
+    </ns2:applicationDescription>
+  </ns0:Components>
+</ns0:CMD>

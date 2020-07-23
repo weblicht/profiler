@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.clarin.eu/cmd/" CMDVersion="1.1" xsi:schemaLocation="http://www.clarin.eu/cmd/ http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/clarin.eu:cr1:p_1404130561238/xsd">
+  <Header>
+    <MdCreator>thorsten.trippel_uni-tuebingen.de@clarin.eu</MdCreator>
+    <MdCreationDate>2020-07-23</MdCreationDate>
+    <MdSelfLink>hdl:11372/VCR-1026</MdSelfLink>
+    <MdProfile>clarin.eu:cr1:p_1404130561238</MdProfile>
+    <MdCollectionDisplayName>CLARIN Virtual Collection Registry</MdCollectionDisplayName>
+  </Header>
+  <Resources>
+    <ResourceProxyList>
+      <ResourceProxy id="LANDINGPAGE-1026">
+        <ResourceType>LandingPage</ResourceType>
+        <ResourceRef>http://hdl.handle.net/11372/VCR-1026</ResourceRef>
+      </ResourceProxy>
+      <ResourceProxy id="r196">
+        <ResourceType>Metadata</ResourceType>
+        <ResourceRef>http://hdl.handle.net/21.11120/0000-0006-2954-E</ResourceRef>
+      </ResourceProxy>
+      <ResourceProxy id="r197">
+        <ResourceType>Metadata</ResourceType>
+        <ResourceRef>http://hdl.handle.net/21.11120/0000-0006-1BC9-A</ResourceRef>
+      </ResourceProxy>
+      <ResourceProxy id="r198">
+        <ResourceType>Metadata</ResourceType>
+        <ResourceRef>http://hdl.handle.net/11372/VC-1002</ResourceRef>
+      </ResourceProxy>
+      <ResourceProxy id="r199">
+        <ResourceType>Metadata</ResourceType>
+        <ResourceRef>http://hdl.handle.net/11022/0000-0007-D0F2-C</ResourceRef>
+      </ResourceProxy>
+      <ResourceProxy id="r200">
+        <ResourceType>Resource</ResourceType>
+        <ResourceRef>http://hdl.handle.net/2027/wu.89035754027</ResourceRef>
+      </ResourceProxy>
+    </ResourceProxyList>
+    <JournalFileProxyList/>
+    <ResourceRelationList/>
+  </Resources>
+  <Components>
+    <VirtualCollection>
+      <Name>3nd Virtual Collection for testing the capabilities of the VCR and the CMDI Explorer</Name>
+      <Description>This test collection should allow for a testing of the CMDI explorer. It should have the following features: 1. It should contain data from at least two different providers 2. the data should be accessible 3. be prepared for a circular definition</Description>
+      <CreationDate>2020-04-20</CreationDate>
+      <Status>published</Status>
+      <Reproducability>untended</Reproducability>
+      <Purpose>sample</Purpose>
+      <Keyword>virtual collection test</Keyword>
+      <Keyword>CMDI explorer</Keyword>
+      <Creator>
+        <Name>Thorsten Trippel</Name>
+        <Email>thorsten.trippel@uni-tuebingen.de</Email>
+        <Organisation>University of Tuebingen</Organisation>
+      </Creator>
+      <Resource ref="r200">
+        <Description>This is already part of http://hdl.handle.net/11372/VC-1002</Description>
+      </Resource>
+    </VirtualCollection>
+  </Components>
+</CMD>
