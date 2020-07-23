@@ -42,6 +42,7 @@ public class OptimaizeLanguageDetector implements LanguageDetector {
     /**
      * @return the detected ISO 639-3 code of the detected language, and "und"
      * (also a valid ISO code) if the language cannot be determined.
+     * @param text the text for which to detect the language
      */
     public String detect(String text) {
         if (text == null || text.isEmpty()) {

@@ -15,6 +15,8 @@ public interface Profiler {
      * @return a list of possible data profiles, ordered by confidence, or null.
      * Most of the profilers return a single Profile. If a profiler does not know the type
      * it will return null. An exception will be thrown in exceptional cases.
+     * @throws IOException if the file IO fails
+     * @throws ProfilingException if the profiling fails
      */
     List<Profile> profile(File file) throws IOException, ProfilingException;
 }
