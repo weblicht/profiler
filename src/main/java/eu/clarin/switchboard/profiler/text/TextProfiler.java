@@ -47,7 +47,8 @@ public class TextProfiler implements Profiler {
     static final int TEST_BYTES_LENGTH = 4 * 1024 * 1024; // how much to test and read into a string
 
     static final String HEADER_NEGRA = "%% NEGRA converted from TCF";
-    static final String HEADER_PLY = "ply\n";
+    static final String HEADER_PLY_UNIX = "ply\n";
+    static final String HEADER_PLY_WINDOWS = "ply\r\n";
 
     static final double CONLLU_MIN_LINES_FIRSTCHAR_DIGIT_HASH_EMPTY_RATIO = 0.90; // conservative - all lines start with digit, hash, or empty
     static final double CONLLU_MIN_TAB_TO_DIGITLINE_RATIO = 8.9; // each line that starts with a digit should have 9 tabs
@@ -179,7 +180,7 @@ public class TextProfiler implements Profiler {
     }
 
     public List<Profile> profile(Statistics stats, String header, File file) throws IOException {
-        if (header.startsWith(HEADER_PLY)) {
+        if (header.startsWith(HEADER_PLY_UNIX) || header.startsWith(HEADER_PLY_WINDOWS)) {
             Profile profile = Profile.builder().certain().mediaType(MEDIATYPE_PLY).build();
             return Collections.singletonList(profile);
         }
@@ -203,7 +204,8 @@ public class TextProfiler implements Profiler {
             return TEXT_PROFILES;
         }
 
-        if (1 < stats.tabsToLinesWithTabsRatio && stats.tabsToLinesWithTabsRatio < 3) {
+        if (stats.newLines >= 1 && stats.tabsToNewLineRatio > 0.5 &&
+                1 < stats.tabsToLinesWithTabsRatio && stats.tabsToLinesWithTabsRatio < 3) {
             Profile profile = Profile.builder().mediaType(MEDIATYPE_SDT).build();
             return Collections.singletonList(profile);
         }

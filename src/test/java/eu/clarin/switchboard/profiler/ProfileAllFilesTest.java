@@ -88,6 +88,7 @@ public class ProfileAllFilesTest {
 
             .put("ply/testcube.ply", Profile.builder().certain().mediaType("model/prs.ply").build())
             .put("ply/gargo.ply", Profile.builder().certain().mediaType("model/prs.ply").build())
+            .put("ply/airplane.ply", Profile.builder().certain().mediaType("model/prs.ply").build())
 
             .put("ppt/test.pptx", Profile.builder().certain().mediaType("application/vnd.openxmlformats-officedocument.presentationml.presentation").language("eng").build())
 
@@ -126,6 +127,7 @@ public class ProfileAllFilesTest {
             .put("text/test.de.txt", Profile.builder().mediaType("text/plain").language("deu").build())
             .put("text/test.ro.txt", Profile.builder().mediaType("text/plain").language("ron").build())
             .put("text/pg76.txt", Profile.builder().mediaType("text/plain").language("eng").build())
+            .put("text/LICENCE", Profile.builder().mediaType("text/plain").language("eng").build())
 
             .put("xls/Tcf2Excel.xls", Profile.builder().certain().mediaType("application/vnd.ms-excel").language("und").build())
             .put("xls/Tcf2Excel.xlsx", Profile.builder().certain().mediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet").language("und").build())
