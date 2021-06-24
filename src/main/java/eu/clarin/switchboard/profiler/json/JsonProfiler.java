@@ -3,7 +3,6 @@ package eu.clarin.switchboard.profiler.json;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
-import eu.clarin.switchboard.profiler.api.Confidence;
 import eu.clarin.switchboard.profiler.api.Profile;
 import eu.clarin.switchboard.profiler.api.Profiler;
 import org.slf4j.Logger;
@@ -12,7 +11,10 @@ import org.slf4j.LoggerFactory;
 import javax.ws.rs.core.MediaType;
 import java.io.*;
 import java.nio.file.Files;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class JsonProfiler implements Profiler {
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonProfiler.class);

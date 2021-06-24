@@ -1,14 +1,15 @@
 package eu.clarin.switchboard.profiler;
 
-import eu.clarin.switchboard.profiler.utils.LanguageCode;
 import eu.clarin.switchboard.profiler.api.Profile;
 import eu.clarin.switchboard.profiler.api.Profiler;
 import eu.clarin.switchboard.profiler.api.ProfilingException;
 import eu.clarin.switchboard.profiler.general.OptimaizeLanguageDetector;
 import eu.clarin.switchboard.profiler.general.TikaProfiler;
 import eu.clarin.switchboard.profiler.general.TikaTextExtractor;
+import eu.clarin.switchboard.profiler.general.TikaUTF8Detector;
 import eu.clarin.switchboard.profiler.json.JsonProfiler;
 import eu.clarin.switchboard.profiler.text.TextProfiler;
+import eu.clarin.switchboard.profiler.utils.LanguageCode;
 import eu.clarin.switchboard.profiler.xml.XmlProfiler;
 import org.apache.tika.config.TikaConfig;
 import org.apache.tika.exception.TikaException;
@@ -35,6 +36,7 @@ public class DefaultProfiler implements Profiler {
     private final Profiler textProfiler;
     private final TikaTextExtractor textExtractor;
     private final OptimaizeLanguageDetector languageDetector;
+    private final TikaUTF8Detector utf8Detector;
 
     public DefaultProfiler() throws TikaException, IOException, SAXException {
         TikaConfig tikaConfig = new TikaConfig(this.getClass().getResourceAsStream("/tikaConfig.xml"));
@@ -44,6 +46,7 @@ public class DefaultProfiler implements Profiler {
         textProfiler = new TextProfiler();
         textExtractor = new TikaTextExtractor(tikaConfig);
         languageDetector = new OptimaizeLanguageDetector();
+        utf8Detector = new TikaUTF8Detector(tikaConfig);
     }
 
     public List<Profile> profile(File file) throws IOException, ProfilingException {
@@ -80,6 +83,13 @@ public class DefaultProfiler implements Profiler {
                 profiles = textProfiles;
                 firstProfile = profiles.get(0);
             }
+            if (firstProfile != null && firstProfile.isMediaType(MediaType.TEXT_PLAIN)) {
+                boolean isUTF8 = utf8Detector.isUTF8(file);
+                if (isUTF8) {
+                    firstProfile = Profile.builder(firstProfile).feature(Profile.FEATURE_IS_UTF8, "true").build();
+                }
+            }
+            LOGGER.debug("file " + file.getName() + "; first text profile is: " + firstProfile);
         }
 
         // detect language for the mediatypes where this makes sense

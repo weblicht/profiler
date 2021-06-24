@@ -19,6 +19,11 @@ public class Profile implements Comparable<Profile> {
      */
     public final static String FEATURE_LANGUAGE = "language";
 
+    /**
+     * feature flag set if the document's main document (if exists and is text) encoding is UTF-8
+     */
+    public final static String FEATURE_IS_UTF8 = "isUTF8Encoding";
+
     // how sure we are this is the right profile
     private final Confidence confidence;
 

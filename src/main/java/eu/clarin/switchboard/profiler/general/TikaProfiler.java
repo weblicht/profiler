@@ -44,7 +44,7 @@ public class TikaProfiler implements Profiler {
     AutoDetectParser parser = new AutoDetectParser();
 
     public TikaProfiler(TikaConfig config) {
-        mediaTypeDetector = new Tika().getDetector();
+        mediaTypeDetector = config.getDetector();
     }
 
     @Override
@@ -55,16 +55,6 @@ public class TikaProfiler implements Profiler {
             metadata.add(TikaMetadataKeys.RESOURCE_NAME_KEY, file.getName());
             mediatype = mediaTypeDetector.detect(inputStream, metadata).toString();
         }
-//        try (TikaInputStream inputStream = TikaInputStream.get(file.toPath())) {
-//            TikaOutline.MyContentHandler handler = new TikaOutline.MyContentHandler();
-//            try {
-//                parser.parse(data, handler, metadata);
-//            } catch (SAXException | TikaException e) {
-//                e.printStackTrace();
-//            }
-//            System.out.println("----------------- outline:");
-//            System.out.println(handler.getDocumentOutline());
-//        }
 
         Profile.Builder profileBuilder = Profile.builder().mediaType(mediatype);
         if (CERTAIN_MEDIATYPES.contains(mediatype)) {

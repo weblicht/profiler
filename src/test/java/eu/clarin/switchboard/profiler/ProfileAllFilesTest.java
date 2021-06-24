@@ -123,11 +123,15 @@ public class ProfileAllFilesTest {
             .put("tei-dta/zwinger_theatrum_1690.TEI-P5.xml", Profile.builder().certain().mediaType("application/tei+xml;format-variant=tei-dta").language("deu").build())
             .put("tei-dta/nn_msgermqu2124_1827.TEI-P5.xml", Profile.builder().certain().mediaType("application/tei+xml;format-variant=tei-dta").language("deu").build())
 
-            .put("text/test.txt", Profile.builder().mediaType("text/plain").language("eng").build())
-            .put("text/test.de.txt", Profile.builder().mediaType("text/plain").language("deu").build())
-            .put("text/test.ro.txt", Profile.builder().mediaType("text/plain").language("ron").build())
-            .put("text/pg76.txt", Profile.builder().mediaType("text/plain").language("eng").build())
-            .put("text/LICENCE", Profile.builder().mediaType("text/plain").language("eng").build())
+            .put("text/test.txt", Profile.builder().mediaType("text/plain").language("eng").feature(Profile.FEATURE_IS_UTF8, "true").build())
+            .put("text/test.de.txt", Profile.builder().mediaType("text/plain").language("deu").feature(Profile.FEATURE_IS_UTF8, "true").build())
+            .put("text/test.de.win1252.txt", Profile.builder().mediaType("text/plain").language("deu").build())
+            .put("text/test.ro.txt", Profile.builder().mediaType("text/plain").language("ron").feature(Profile.FEATURE_IS_UTF8, "true").build())
+            .put("text/test.ro.win1250.txt", Profile.builder().mediaType("text/plain").language("ron").build())
+            .put("text/pg76.txt", Profile.builder().mediaType("text/plain").language("eng").feature(Profile.FEATURE_IS_UTF8, "true").build())
+            .put("text/LICENCE", Profile.builder().mediaType("text/plain").language("eng").feature(Profile.FEATURE_IS_UTF8, "true").build())
+            .put("text/test.zh.utf16bom.txt", Profile.builder().mediaType("text/plain").language("zho").build())
+            .put("text/test.zh.utf16be.txt", Profile.builder().mediaType("text/plain").language("und").build())
 
             .put("xls/Tcf2Excel.xls", Profile.builder().certain().mediaType("application/vnd.ms-excel").language("und").build())
             .put("xls/Tcf2Excel.xlsx", Profile.builder().certain().mediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet").language("und").build())
@@ -138,7 +142,7 @@ public class ProfileAllFilesTest {
 
     static final Map<String, List<Profile>> EXPECTED_MULTIPLE = new ImmutableMap.Builder<String, List<Profile>>()
             .put("text/test", Arrays.asList(
-                    Profile.builder().mediaType(MediaType.TEXT_PLAIN).language("und").build(),
+                    Profile.builder().mediaType(MediaType.TEXT_PLAIN).language("und").feature(Profile.FEATURE_IS_UTF8, "true").build(),
                     Profile.builder().mediaType(TextProfiler.MEDIATYPE_QUERY_CQP).build(),
                     Profile.builder().mediaType(TextProfiler.MEDIATYPE_QUERY_DDC).build(),
                     Profile.builder().mediaType(TextProfiler.MEDIATYPE_QUERY_DLEXDB).build(),
@@ -147,7 +151,16 @@ public class ProfileAllFilesTest {
                     )
             )
             .put("text/test the second", Arrays.asList(
-                    Profile.builder().mediaType(MediaType.TEXT_PLAIN).language("eng").build(),
+                    Profile.builder().mediaType(MediaType.TEXT_PLAIN).language("eng").feature(Profile.FEATURE_IS_UTF8, "true").build(),
+                    Profile.builder().mediaType(TextProfiler.MEDIATYPE_QUERY_CQP).build(),
+                    Profile.builder().mediaType(TextProfiler.MEDIATYPE_QUERY_DDC).build(),
+                    Profile.builder().mediaType(TextProfiler.MEDIATYPE_QUERY_DLEXDB).build(),
+                    Profile.builder().mediaType(TextProfiler.MEDIATYPE_QUERY_CQL).build(),
+                    Profile.builder().mediaType(TextProfiler.MEDIATYPE_EXMARALDA_SIMPLE).build()
+                    )
+            )
+            .put("text/test.zh.txt", Arrays.asList(
+                    Profile.builder().mediaType(MediaType.TEXT_PLAIN).language("zho").feature(Profile.FEATURE_IS_UTF8, "true").build(),
                     Profile.builder().mediaType(TextProfiler.MEDIATYPE_QUERY_CQP).build(),
                     Profile.builder().mediaType(TextProfiler.MEDIATYPE_QUERY_DDC).build(),
                     Profile.builder().mediaType(TextProfiler.MEDIATYPE_QUERY_DLEXDB).build(),
