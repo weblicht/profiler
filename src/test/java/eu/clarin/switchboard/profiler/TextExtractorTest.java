@@ -1,5 +1,6 @@
 package eu.clarin.switchboard.profiler;
 
+import eu.clarin.switchboard.profiler.api.TextExtractor;
 import eu.clarin.switchboard.profiler.general.TikaTextExtractor;
 import org.apache.tika.config.TikaConfig;
 import org.apache.tika.exception.TikaException;
@@ -17,7 +18,7 @@ public class TextExtractorTest {
             "throughout Europe. These centers provide an infrastructure for the distributed access " +
             "and processing of written, spoken and multi-modal language data.";
 
-    TikaTextExtractor textExtractor;
+    TextExtractor textExtractor;
 
     @Before
     public void setUp() throws Exception {
@@ -26,25 +27,25 @@ public class TextExtractorTest {
     }
 
     @Test
-    public void pdf() throws IOException, TikaException, SAXException {
+    public void pdf() throws Exception {
         String fileName = "./src/test/resources/pdf/test.pdf";
-        String converted = textExtractor.getText(Paths.get(fileName).toFile(), "application/pdf");
+        String converted = textExtractor.extractText(Paths.get(fileName).toFile(), "application/pdf");
         // pdf is a lossy format, we have to normalize spacing characters
         converted = converted.replaceAll("\\s+", " ");
         assertEquals(expected, converted);
     }
 
     @Test
-    public void doc() throws IOException, TikaException, SAXException {
+    public void doc() throws Exception {
         String fileName = "./src/test/resources/doc/test.doc";
-        String converted = textExtractor.getText(Paths.get(fileName).toFile(), "application/msword");
+        String converted = textExtractor.extractText(Paths.get(fileName).toFile(), "application/msword");
         assertEquals(expected, converted);
     }
 
     @Test
-    public void rtf() throws IOException, TikaException, SAXException {
+    public void rtf() throws Exception {
         String fileName = "./src/test/resources/rtf/test.rtf";
-        String converted = textExtractor.getText(Paths.get(fileName).toFile(), "application/rtf");
+        String converted = textExtractor.extractText(Paths.get(fileName).toFile(), "application/rtf");
         assertEquals(expected, converted);
     }
 }

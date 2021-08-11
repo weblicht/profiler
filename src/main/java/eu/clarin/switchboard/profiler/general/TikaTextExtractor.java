@@ -1,6 +1,8 @@
 package eu.clarin.switchboard.profiler.general;
 
 import com.google.common.collect.ImmutableSet;
+import eu.clarin.switchboard.profiler.api.TextExtractionException;
+import eu.clarin.switchboard.profiler.api.TextExtractor;
 import eu.clarin.switchboard.profiler.json.JsonProfiler;
 import eu.clarin.switchboard.profiler.xml.TcfProfiler;
 import eu.clarin.switchboard.profiler.xml.TeiProfiler;
@@ -18,7 +20,7 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Set;
 
-public class TikaTextExtractor {
+public class TikaTextExtractor implements TextExtractor {
     public static final Set<String> textualMediatypes = ImmutableSet.of(
             MediaType.TEXT_PLAIN,
             MediaType.TEXT_HTML,
@@ -49,7 +51,8 @@ public class TikaTextExtractor {
         parser = new AutoDetectParser(config);
     }
 
-    public String getText(File file, String mediaType) throws IOException, TikaException {
+    @Override
+    public String extractText(File file, String mediaType) throws TextExtractionException {
         Objects.requireNonNull(mediaType);
 
         if (!textualMediatypes.contains(mediaType)) {
@@ -64,6 +67,8 @@ public class TikaTextExtractor {
             parser.parse(inputStream, handler, metadata);
         } catch (SAXException e) {
             // ignore, we just try to get the text
+        } catch (IOException | TikaException e) {
+            throw new TextExtractionException(e);
         }
         return handler.toString().trim();
     }

@@ -3,6 +3,7 @@ package eu.clarin.switchboard.profiler;
 import eu.clarin.switchboard.profiler.api.Profile;
 import eu.clarin.switchboard.profiler.api.Profiler;
 import eu.clarin.switchboard.profiler.api.ProfilingException;
+import eu.clarin.switchboard.profiler.api.TextExtractor;
 import eu.clarin.switchboard.profiler.general.OptimaizeLanguageDetector;
 import eu.clarin.switchboard.profiler.general.TikaProfiler;
 import eu.clarin.switchboard.profiler.general.TikaTextExtractor;
@@ -34,7 +35,7 @@ public class DefaultProfiler implements Profiler {
     private final Profiler xmlProfiler;
     private final Profiler jsonProfiler;
     private final Profiler textProfiler;
-    private final TikaTextExtractor textExtractor;
+    private final TextExtractor textExtractor;
     private final OptimaizeLanguageDetector languageDetector;
     private final TikaUTF8Detector utf8Detector;
 
@@ -47,6 +48,10 @@ public class DefaultProfiler implements Profiler {
         textExtractor = new TikaTextExtractor(tikaConfig);
         languageDetector = new OptimaizeLanguageDetector();
         utf8Detector = new TikaUTF8Detector(tikaConfig);
+    }
+
+    public TextExtractor getTextExtractor() {
+        return textExtractor;
     }
 
     public List<Profile> profile(File file) throws IOException, ProfilingException {
@@ -97,8 +102,8 @@ public class DefaultProfiler implements Profiler {
         if (language == null || LanguageCode.UNDETERMINED.equals(language)) {
             String text = null;
             try {
-                text = textExtractor.getText(file, firstProfile.getMediaType());
-            } catch (IOException | TikaException xc) {
+                text = textExtractor.extractText(file, firstProfile.getMediaType());
+            } catch (Exception xc) {
                 LOGGER.info("Cannot convert media to text for detecting the language: " + xc.getMessage());
             }
 
