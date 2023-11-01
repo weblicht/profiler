@@ -7,7 +7,7 @@ import eu.clarin.switchboard.profiler.api.ProfilingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import java.io.ByteArrayInputStream;

@@ -5,7 +5,7 @@ import eu.clarin.switchboard.profiler.api.UTF8Detector;
 import org.apache.tika.config.TikaConfig;
 import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
-import org.apache.tika.metadata.TikaMetadataKeys;
+import org.apache.tika.metadata.TikaCoreProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +26,7 @@ public class TikaUTF8Detector implements UTF8Detector {
     public boolean isUTF8(File file) throws IOException {
         try (TikaInputStream inputStream = TikaInputStream.get(file.toPath())) {
             Metadata metadata = new Metadata();
-            metadata.add(TikaMetadataKeys.RESOURCE_NAME_KEY, file.getName());
+            metadata.add(TikaCoreProperties.RESOURCE_NAME_KEY, file.getName());
             Charset charset = encodingDetector.detect(inputStream, metadata);
             if (charset == null) {
                 return false;
