@@ -10,11 +10,12 @@ import org.apache.tika.config.TikaConfig;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
+import org.apache.tika.metadata.TikaCoreProperties;
 import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.sax.BodyContentHandler;
 import org.xml.sax.SAXException;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
@@ -62,7 +63,7 @@ public class TikaTextExtractor implements TextExtractor {
         BodyContentHandler handler = new BodyContentHandler();
         try (TikaInputStream inputStream = TikaInputStream.get(file.toPath())) {
             Metadata metadata = new Metadata();
-            metadata.add(Metadata.RESOURCE_NAME_KEY, file.getName());
+            metadata.add(TikaCoreProperties.RESOURCE_NAME_KEY, file.getName());
             metadata.add(Metadata.CONTENT_TYPE, mediaType);
             parser.parse(inputStream, handler, metadata);
         } catch (SAXException e) {

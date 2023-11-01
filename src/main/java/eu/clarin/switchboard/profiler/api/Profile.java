@@ -3,7 +3,7 @@ package eu.clarin.switchboard.profiler.api;
 import com.google.common.collect.ImmutableMap;
 import org.jetbrains.annotations.NotNull;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
