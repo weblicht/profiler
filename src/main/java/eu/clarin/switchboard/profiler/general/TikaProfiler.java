@@ -8,7 +8,7 @@ import org.apache.tika.config.TikaConfig;
 import org.apache.tika.detect.Detector;
 import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
-import org.apache.tika.metadata.TikaMetadataKeys;
+import org.apache.tika.metadata.TikaCoreProperties;
 import org.apache.tika.parser.AutoDetectParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +52,7 @@ public class TikaProfiler implements Profiler {
         String mediatype;
         try (TikaInputStream inputStream = TikaInputStream.get(file.toPath())) {
             Metadata metadata = new Metadata();
-            metadata.add(TikaMetadataKeys.RESOURCE_NAME_KEY, file.getName());
+            metadata.add(TikaCoreProperties.RESOURCE_NAME_KEY, file.getName());
             mediatype = mediaTypeDetector.detect(inputStream, metadata).toString();
         }
 
