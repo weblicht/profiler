@@ -4,7 +4,7 @@
 
     <groupId>eu.clarin.switchboard</groupId>
     <artifactId>profiler</artifactId>
-    <version>1.0.14-SNAPSHOT</version>
+    <version>1.0.14</version>
     <packaging>jar</packaging>
     
     <name>profiler</name>
@@ -41,7 +41,7 @@
         <url>https://github.com/weblicht/profiler.git</url>
         <connection>scm:git:git@github.com:weblicht/profiler.git</connection>
         <developerConnection>scm:git:git@github.com:weblicht/profiler.git</developerConnection>
-        <tag>profiler-1.0.13</tag>
+        <tag>profiler-1.0.14</tag>
     </scm>
     
     <distributionManagement>
